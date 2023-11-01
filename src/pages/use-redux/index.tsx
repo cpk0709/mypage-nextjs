@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 const UseReduxPage = () => {
-  const value = useSelector((state: number) => state);
+  const value = useSelector((state: {counter: number}) => state.counter);
   const dispatch = useDispatch();
 
   const onIncrement = () => {
