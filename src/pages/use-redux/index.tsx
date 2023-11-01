@@ -1,12 +1,17 @@
-type Props = {
-  value: number;
-  onIncrement: () => void;
-  onDecrement: () => void;
-}
+import { useSelector, useDispatch } from 'react-redux';
 
-const defaultPage = ({value , onIncrement, onDecrement}: Props) => {
-  console.log(value);
-  console.log('sss',onIncrement);
+const UseReduxPage = () => {
+  const value = useSelector((state: number) => state);
+  const dispatch = useDispatch();
+
+  const onIncrement = () => {
+    dispatch({ type: 'INCREMENT' });
+  };
+
+  const onDecrement = () => {
+    dispatch({ type: 'DECREMENT' });
+  };
+
   return (
     <section>
       <h1>Clicked : {value} times</h1>
@@ -20,4 +25,4 @@ const defaultPage = ({value , onIncrement, onDecrement}: Props) => {
   );
 };
 
-export default defaultPage;
+export default UseReduxPage;
