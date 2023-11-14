@@ -2,8 +2,8 @@ import { NextPage } from 'next';
 
 const Home: NextPage = () => {
   return (
-    <div className="bg-slate-400 py-20 px-20 grid gap-10 min-h-screen">
-      <div className="bg-white p-6 rounded-3xl shadow-xl">
+    <div className="bg-slate-400 place-content-center py-20 px-20 grid gap-10 lg:grid-cols-2 xl:grid-cols-3 min-h-screen">
+      <div className="bg-white sm:bg-slate-300 xl:bg-green-200 p-6 rounded-3xl shadow-xl flex flex-col">
         <span className="font-semibold text-3xl">Select Item</span>
         <div className="flex justify-between my-2">
           <span className="text-gray-500">Grey Chair</span>
@@ -17,7 +17,7 @@ const Home: NextPage = () => {
           <span>Total</span>
           <span className=" font-semibold">$99</span>
         </div>
-        <button className=" mt-5 bg-blue-500 text-white p-3 text-center rounded-xl w-2/4 mx-auto hover:bg-teal-500 hover:text-black active:bg-yellow-500">
+        <button className=" mt-5 bg-blue-500 text-white p-3 text-center rounded-xl w-2/4 hover:bg-teal-500 hover:text-black active:bg-yellow-500">
           Checkout
         </button>
       </div>
@@ -43,7 +43,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white p-6 rounded-2xl shadow-xl">
+      <div className="bg-white p-6 rounded-2xl shadow-xl lg:col-span-2 xl:col-span-1">
         <div className="flex justify-between items-center">
           <span>⬅️</span>
           <div className=" space-x-3">
