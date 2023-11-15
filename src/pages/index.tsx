@@ -2,15 +2,15 @@ import type { NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <div className='flex flex-col space-y-5 py-10'>
       {[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((_, i) => (
-        <div key={i}>
-          <div>
-            <div />
-            <div>
-              <h3>New iPhone 14</h3>
-              <span>Black</span>
-              <span>$95</span>
+        <div key={i} className=' px-4 border-b border-solid border-gray-200 pb-4 cursor-pointer flex justify-between'>
+          <div className='flex space-x-4'>
+            <div className='w-20 h-20 bg-gray-400 rounded-md'/>
+            <div className='pt-2 flex flex-col'>
+              <h3 className='text-sm font-medium text-gray-900'>New iPhone 14</h3>
+              <span className='text-xs text-gray-500'>Black</span>
+              <span className=' font-medium mt-1 text-gray-900'>$95</span>
             </div>
           </div>
           <div>
