@@ -1,18 +1,22 @@
 import { useState } from 'react';
 
+const cls = (...classnames: string[]) => {
+  return classnames.join(' ');
+}
+
 export default function Enter() {
   const [method, setMethod] = useState<'email' | 'phone'>('email');
   const onEmailClick = () => setMethod('email');
   const onPhoneClick = () => setMethod('phone');
   return (
-    <div className="mt-16">
+    <div className="mt-16 px-4">
       <h3 className='text-3xl font-bold text-center'>Enter to Carrot</h3>
-      <div className="mt-16">
+      <div className="mt-8">
         <div className='flex flex-col items-center'>
-          <h5 className=' text-sm text-green-100'>Enter using:</h5>
-          <div>
-            <button onClick={onEmailClick}>Email</button>
-            <button onClick={onPhoneClick}>Phone</button>
+          <h5 className=' text-sm text-gray-500 font-medium'>Enter using:</h5>
+          <div className='grid w-full border-b border-solid border-gray-200 grid-cols-2 gap-16 mt-8'>
+            <button className={cls('pd-4 font-medium border-b-2', method === 'email' ? 'text-orange-500 border-solid border-orange-500' : 'border-transparent text-gray-500')} onClick={onEmailClick}>Email</button>
+            <button className={cls('pd-4 font-medium border-b-2', method === 'phone' ? 'text-orange-500 border-solid border-orange-500' : 'border-transparent text-gray-500')} onClick={onPhoneClick}>Phone</button>
           </div>
         </div>
         <form>
@@ -20,12 +24,12 @@ export default function Enter() {
             {method === 'email' ? 'Email address' : null}
             {method === 'phone' ? 'Phone number' : null}
           </label>
-          <div>
-            {method === 'email' ? <input type="email" required /> : null}
+          <div className=' mt-1'>
+            {method === 'email' ? <input type="email" className=' appearance-none w-full px-3 py-2 border border-solid border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500' placeholder='email 입력' required /> : null}
             {method === 'phone' ? (
               <div>
                 <span>+82</span>
-                <input type="number" required />
+                <input type="number" className=' appearance-none w-full px-3 py-2 border border-solid border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500' required />
               </div>
             ) : null}
           </div>
