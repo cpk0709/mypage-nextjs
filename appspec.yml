@@ -20,8 +20,8 @@ files:
   #   destination: /home/ubuntu/my_web_server-tmp/nginx
 
   # commit message files
-  - source: /last-commit-message.txt
-    destination: /home/ubuntu/my_web_server-tmp/
+  # - source: /last-commit-message.txt
+  #   destination: /home/ubuntu/my_web_server-tmp/
 
 # source는 로컬의 어떤 파일들을 EC2로 옮길지에 대한 것입니다. 현재는 모든 파일("/")을 선택하고 있습니다.
 # destination은 로컬로부터 받아온 파일들을 EC2 instance 어디에 저장할 지에 대한 것입니다.
