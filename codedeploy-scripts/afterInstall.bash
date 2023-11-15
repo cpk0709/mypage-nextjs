@@ -10,9 +10,9 @@ docker-compose -f docker-compose-production.yml pull
 docker-compose -f docker-compose-production.yml up -d
 
 # send notification
-docker cp my_web_server:/app/commit_message.txt /home/ubuntu/my_web_server/commit_message.txt
-docker cp my_web_server:/app/.env.production.local /home/ubuntu/my_web_server/.env.production.local
-bb_commit_message=$(cat /home/ubuntu/my_web_server/commit_message.txt)
+# docker cp my_web_server:/app/commit_message.txt /home/ubuntu/my_web_server/commit_message.txt
+# docker cp my_web_server:/app/.env.production.local /home/ubuntu/my_web_server/.env.production.local
+# bb_commit_message=$(cat /home/ubuntu/my_web_server/commit_message.txt)
 # bb_message_body="메디빌더 운영서버가 업데이트되었습니다.(https://www.my_web_server.com)
 # $bb_commit_message"
 # bb_message=$(jq -n --arg body "$bb_message_body" '{channel:"C05GAEJAC2V", text:$body}')
