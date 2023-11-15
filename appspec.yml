@@ -16,8 +16,8 @@ files:
     destination: /home/ubuntu/my_web_server-tmp/
 
   # nginx files
-  - source: /nginx/nginx.conf
-    destination: /home/ubuntu/my_web_server-tmp/nginx
+  # - source: /nginx/nginx.conf
+  #   destination: /home/ubuntu/my_web_server-tmp/nginx
 
   # commit message files
   - source: /last-commit-message.txt
