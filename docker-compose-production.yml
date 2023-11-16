@@ -4,7 +4,7 @@ services:
     container_name: my_web_server
     restart: always
     build: .
-    image: 686164345236.dkr.ecr.ap-northeast-2.amazonaws.com/my_web_server
+    image: 686164345236.dkr.ecr.ap-northeast-2.amazonaws.com/my_web_server:latest
     ports:
       - 3000:3000
   # nginx:
