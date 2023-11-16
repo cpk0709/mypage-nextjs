@@ -13,8 +13,8 @@ const Home: NextPage = () => {
               <span className=' font-medium mt-1 text-gray-900'>$95</span>
             </div>
           </div>
-          <div>
-            <div>
+          <div className='flex space-x-2 justify-end items-end bg-slate-100'>
+            <div className='flex space-x-0.5 items-center text-sm text-gray-600'>
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -31,7 +31,7 @@ const Home: NextPage = () => {
               </svg>
               <span>1</span>
             </div>
-            <div>
+            <div className='flex space-x-0.5 items-center text-sm text-gray-600'>
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -51,7 +51,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       ))}
-      <button>
+      <button className='fixed hover:bg-orange-500 cursor-pointer transition-colors bottom-24 right-5 bg-orange-400 rounded-full p-3 text-white shadow-xl'>
         <svg
           className="h-6 w-6"
           xmlns="http://www.w3.org/2000/svg"
