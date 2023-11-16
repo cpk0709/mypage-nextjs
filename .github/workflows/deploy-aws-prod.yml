@@ -138,7 +138,7 @@ jobs:
           target: nextjs-cache
           outputs: type=local,dest=.
           push: false
-          tags: 686164345236.dkr.ecr.ap-northeast-2.amazonaws.com/my_web_server
+          tags: 686164345236.dkr.ecr.ap-northeast-2.amazonaws.com/my_web_server:latest
           cache-from: type=gha
 
       - name: print nextjs cache directory after build
