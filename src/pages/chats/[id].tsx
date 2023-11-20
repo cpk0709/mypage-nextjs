@@ -21,11 +21,16 @@ const ChatDetail: NextPage = () => {
           <p>미쳤어</p>
         </div>
       </div>
-      <div className='fixed w-full mx-auto max-w-md'>
-        <div>
-          <input type="text" />
-          <div>
-            <span>&rarr;</span>
+      <div className="fixed w-full mx-auto max-w-md bottom-2">
+        <div className="flex relative items-center">
+          <input
+            type="text"
+            className=" shadow-sm rounded-full w-full border border-solid border-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 pr-12"
+          />
+          <div className=" absolute inset-y-0 flex py-1.5 pr-1.5 right-0">
+            <button className="flex items-center focus:ring-2 focus:ring-offset-2 focus:ring-orange-500  bg-orange-500 rounded-full px-3 text-sm  text-white hover:bg-orange-600">
+              &rarr;
+            </button>
           </div>
         </div>
       </div>
