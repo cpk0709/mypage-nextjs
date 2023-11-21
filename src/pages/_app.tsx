@@ -12,7 +12,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <Global styles={globalStyles} />
       <Head />
-      <Component {...pageProps} />
+      <div className="w-full max-w-xl mx-auto">
+        <Component {...pageProps} />
+      </div>
     </Provider>
   );
 }
