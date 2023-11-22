@@ -10,7 +10,6 @@ const EachItem = ({
 }: EachItemProps) => {
   return (
     <div
-      key={id}
       className=" px-4 border-b border-solid border-gray-200 pb-4 cursor-pointer flex justify-between"
     >
       <div className="flex space-x-4">

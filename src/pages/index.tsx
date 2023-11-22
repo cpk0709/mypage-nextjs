@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Layout from '@/components/common/layout';
 import { EachItemProps } from '@/types/types';
 import EachItem from '@/components/molecules/EachItem';
+import Button from '@/components/atom/Button';
 
 const itemList: Array<EachItemProps> = [
   {
@@ -44,21 +45,39 @@ const itemList: Array<EachItemProps> = [
     likeCount: 2,
     chatCount: 3,
   },
+  {
+    id: 6,
+    itemTitle: '4인용 식탁',
+    option: '다크 우드',
+    price: 200,
+    likeCount: 2,
+    chatCount: 3,
+  },
+  {
+    id: 7,
+    itemTitle: '게이밍 의자',
+    option: '화이트 색상',
+    price: 70,
+    likeCount: 2,
+    chatCount: 3,
+  },
 ];
 const Home: NextPage = () => {
   return (
     <Layout title="home" hasTabBar>
       <div className="flex flex-col space-y-5 py-10">
         {itemList.map((item) => (
-          <EachItem
-            itemTitle={item.itemTitle}
-            option={item.option}
-            price={item.price}
-            likeCount={item.likeCount}
-            chatCount={item.chatCount}
-          />
+            <EachItem
+              key={item.id}
+              id={item.id}
+              itemTitle={item.itemTitle}
+              option={item.option}
+              price={item.price}
+              likeCount={item.likeCount}
+              chatCount={item.chatCount}
+            />
         ))}
-        <button className="fixed hover:bg-orange-500 cursor-pointer transition-colors bottom-24 right-5 bg-orange-400 rounded-full p-3 text-white shadow-xl">
+        <Button>
           <svg
             className="h-6 w-6"
             xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +93,7 @@ const Home: NextPage = () => {
               d="M12 6v6m0 0v6m0-6h6m-6 0H6"
             />
           </svg>
-        </button>
+        </Button>
       </div>
     </Layout>
   );
