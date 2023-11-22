@@ -1,13 +1,13 @@
 import { ReactNode } from 'react';
 
-type ButtonProps = {
+type FixedButtonProps = {
   children:ReactNode;
 }
 
-const Button = ({children}:ButtonProps) => {
+const Button = ({children}:FixedButtonProps) => {
   
   return (
-    <button className="fixed hover:bg-orange-500 cursor-pointer transition-colors bottom-24 right-5 bg-orange-400 rounded-full p-3 text-white shadow-xl">
+    <button className="w-14 h-14 text-white bg-orange-500 hover:bg-orange-600 rounded-full flex items-center justify-center">
       {children}
     </button>
   );

@@ -1,5 +1,6 @@
 import { CommunityListItemProps } from '@/types/types';
 import ChatIcon from '@/components/atom/icons/ChatIcon';
+import InterestingIcon from '@/components/atom/icons/InterestingIcon';
 
 const CommunityListItem = ({id, tag, title, userName, uploadTime, interestingCount, answerCount}:CommunityListItemProps) => {
   
@@ -17,20 +18,7 @@ const CommunityListItem = ({id, tag, title, userName, uploadTime, interestingCou
             </div>
             <div className="flex space-x-5 mt-3 text-gray-700 py-2.5 border-t border-b-[2px] border-solid border-gray-200 w-full">
               <span className="flex space-x-2 items-center text-sm">
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
-                </svg>
+                <InterestingIcon/>
                 <span>궁금해요 {interestingCount}</span>
               </span>
               <span className="flex space-x-2 items-center text-sm">

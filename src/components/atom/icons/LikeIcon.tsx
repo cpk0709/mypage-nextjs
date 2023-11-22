@@ -1,8 +1,12 @@
-const LikeIcon = () => {
+type Props = {
+  size?:number;
+}
+
+const LikeIcon = ({size = 4}:Props) => {
   
   return (
     <svg
-    className="w-4 h-4"
+    className={`w-${size} h-${size}`}
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
