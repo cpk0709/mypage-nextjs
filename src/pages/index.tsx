@@ -4,6 +4,7 @@ import { EachItemProps } from '@/types/types';
 import EachItem from '@/components/organisms/EachItem';
 import FixedButton from '@/components/atom/FixedButton';
 import PlusIcon from '@/components/atom/icons/PlusIcon';
+import { useRouter } from 'next/router';
 
 const itemList: Array<EachItemProps> = [
   {
@@ -64,19 +65,22 @@ const itemList: Array<EachItemProps> = [
   },
 ];
 const Home: NextPage = () => {
+  const router = useRouter();
+
   return (
     <Layout title="home" hasTabBar>
       <div className="flex flex-col space-y-5 py-10">
         {itemList.map((item) => (
+          <button key={item.id} onClick={() => router.push(`/item/${item.id}`)}>
             <EachItem
-              key={item.id}
               id={item.id}
               itemTitle={item.itemTitle}
               option={item.option}
               price={item.price}
               likeCount={item.likeCount}
               chatCount={item.chatCount}
-            />
+              />
+          </button>
         ))}
         <FixedButton>
           <PlusIcon/>
