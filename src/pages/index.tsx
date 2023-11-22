@@ -66,7 +66,9 @@ const itemList: Array<EachItemProps> = [
 ];
 const Home: NextPage = () => {
   const router = useRouter();
-
+  const moveToUpload = () => {
+    router.push('/item/upload');
+  };
   return (
     <Layout title="home" hasTabBar>
       <div className="flex flex-col space-y-5 py-10">
@@ -79,11 +81,11 @@ const Home: NextPage = () => {
               price={item.price}
               likeCount={item.likeCount}
               chatCount={item.chatCount}
-              />
+            />
           </button>
         ))}
-        <FixedButton>
-          <PlusIcon/>
+        <FixedButton onClick={moveToUpload}>
+          <PlusIcon />
         </FixedButton>
       </div>
     </Layout>
