@@ -1,8 +1,10 @@
 import type { NextPage } from 'next';
 import Layout from '@/components/common/layout';
 import { EachItemProps } from '@/types/types';
-import EachItem from '@/components/molecules/EachItem';
-import Button from '@/components/atom/Button';
+import EachItem from '@/components/organisms/EachItem';
+import FixedButton from '@/components/atom/FixedButton';
+import PlusIcon from '@/components/atom/icons/PlusIcon';
+import { useRouter } from 'next/router';
 
 const itemList: Array<EachItemProps> = [
   {
@@ -63,37 +65,26 @@ const itemList: Array<EachItemProps> = [
   },
 ];
 const Home: NextPage = () => {
+  const router = useRouter();
+
   return (
     <Layout title="home" hasTabBar>
       <div className="flex flex-col space-y-5 py-10">
         {itemList.map((item) => (
+          <button key={item.id} onClick={() => router.push(`/item/${item.id}`)}>
             <EachItem
-              key={item.id}
               id={item.id}
               itemTitle={item.itemTitle}
               option={item.option}
               price={item.price}
               likeCount={item.likeCount}
               chatCount={item.chatCount}
-            />
+              />
+          </button>
         ))}
-        <Button>
-          <svg
-            className="h-6 w-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-            />
-          </svg>
-        </Button>
+        <FixedButton>
+          <PlusIcon/>
+        </FixedButton>
       </div>
     </Layout>
   );
