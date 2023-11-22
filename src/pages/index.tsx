@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Layout from '@/components/common/layout';
 import { EachItemProps } from '@/types/types';
 import EachItem from '@/components/organisms/EachItem';
-import FixedButton from '@/components/atom/FixedButton';
+import FloatingButton from '@/components/atom/FloatingButton';
 import PlusIcon from '@/components/atom/icons/PlusIcon';
 import { useRouter } from 'next/router';
 
@@ -66,7 +66,9 @@ const itemList: Array<EachItemProps> = [
 ];
 const Home: NextPage = () => {
   const router = useRouter();
-
+  const moveToUpload = () => {
+    router.push('/item/upload');
+  };
   return (
     <Layout title="home" hasTabBar>
       <div className="flex flex-col space-y-5 py-10">
@@ -79,12 +81,12 @@ const Home: NextPage = () => {
               price={item.price}
               likeCount={item.likeCount}
               chatCount={item.chatCount}
-              />
+            />
           </button>
         ))}
-        <FixedButton>
-          <PlusIcon/>
-        </FixedButton>
+        <FloatingButton onClick={moveToUpload}>
+          <PlusIcon />
+        </FloatingButton>
       </div>
     </Layout>
   );
