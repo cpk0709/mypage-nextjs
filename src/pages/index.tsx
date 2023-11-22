@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Layout from '@/components/common/layout';
 import { EachItemProps } from '@/types/types';
-import EachItem from '@/components/molecules/EachItem';
+import EachItem from '@/components/organisms/EachItem';
 import FixedButton from '@/components/atom/FixedButton';
 import PlusIcon from '@/components/atom/icons/PlusIcon';
 

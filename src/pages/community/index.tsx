@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import FixedButton from '@/components/atom/FixedButton';
 import Layout from '@/components/common/layout';
 import { CommunityListItemProps } from '@/types/types';
-import CommunityListItem from '@/components/molecules/CommunityListItem';
+import CommunityListItem from '@/components/organisms/CommunityListItem';
 import WriteIcon from '@/components/atom/icons/WriteIcon';
 
 const CommunityList:Array<CommunityListItemProps> = [
