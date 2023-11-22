@@ -1,7 +1,7 @@
 import Layout from '@/components/common/layout';
 import type { NextPage } from 'next';
 import VideoIcon from '@/components/atom/icons/VideoIcon';
-import FixedButton from '@/components/atom/FixedButton';
+import FloatingButton from '@/components/atom/FloatingButton';
 import { useRouter } from 'next/router';
 import StreamListItem from '@/components/organisms/StreamListItem';
 
@@ -11,15 +11,20 @@ const Live: NextPage = () => {
     route.push('/streams/create');
   };
 
+  const moveToStreamDetail = () => {
+    // need to edit
+    route.push('/streams/1');
+  };
+
   return (
     <Layout title="Stream" hasTabBar>
       <div className="py-10 px-4 divide-y-2 space-y-4">
         {[1, 1, 1, 1, 1, 1, 1].map((_, index) => (
-          <StreamListItem key={index} />
+          <StreamListItem onClick={moveToStreamDetail} key={index} />
         ))}
-        <FixedButton onClick={moveToStreamCreate}>
+        <FloatingButton onClick={moveToStreamCreate}>
           <VideoIcon />
-        </FixedButton>
+        </FloatingButton>
       </div>
     </Layout>
   );

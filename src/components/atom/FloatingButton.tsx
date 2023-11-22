@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
 
-type FixedButtonProps = {
+type FloatingButtonProps = {
   children: ReactNode;
   onClick: () => void;
 };
 
-const FixedButton = ({ children, onClick }: FixedButtonProps) => {
+const FloatingButton = ({ children, onClick }: FloatingButtonProps) => {
   return (
     <button
       onClick={onClick}
@@ -16,4 +16,4 @@ const FixedButton = ({ children, onClick }: FixedButtonProps) => {
   );
 };
 
-export default FixedButton;
+export default FloatingButton;

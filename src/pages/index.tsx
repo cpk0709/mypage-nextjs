@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Layout from '@/components/common/layout';
 import { EachItemProps } from '@/types/types';
 import EachItem from '@/components/organisms/EachItem';
-import FixedButton from '@/components/atom/FixedButton';
+import FloatingButton from '@/components/atom/FloatingButton';
 import PlusIcon from '@/components/atom/icons/PlusIcon';
 import { useRouter } from 'next/router';
 
@@ -84,9 +84,9 @@ const Home: NextPage = () => {
             />
           </button>
         ))}
-        <FixedButton onClick={moveToUpload}>
+        <FloatingButton onClick={moveToUpload}>
           <PlusIcon />
-        </FixedButton>
+        </FloatingButton>
       </div>
     </Layout>
   );

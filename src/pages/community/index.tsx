@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import FixedButton from '@/components/atom/FixedButton';
+import FloatingButton from '@/components/atom/FloatingButton';
 import Layout from '@/components/common/layout';
 import { CommunityListItemProps } from '@/types/types';
 import CommunityListItem from '@/components/organisms/CommunityListItem';
@@ -80,9 +80,9 @@ const Community: NextPage = () => {
           </button>
         ))}
 
-        <FixedButton onClick={moveToWrite}>
+        <FloatingButton onClick={moveToWrite}>
           <WriteIcon />
-        </FixedButton>
+        </FloatingButton>
       </div>
     </Layout>
   );
