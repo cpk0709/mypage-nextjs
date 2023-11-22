@@ -5,6 +5,17 @@ import ShoppingBagIcon from '@/components/atom/icons/ShoppingBagIcon';
 import LikeIcon from '@/components/atom/icons/LikeIcon';
 import BtnTextCol from '@/components/molecules/BtnTextCol';
 import StarIcon from '@/components/atom/icons/StarIcon';
+import { ReviewForUserProps } from '@/types/types';
+import ReviewForUser from '@/components/organisms/ReviewForUser';
+
+const reviewList:Array<ReviewForUserProps> = [
+  {
+    id:1,
+    userName:'니꼬',
+    score:2,
+    desc:'Normally, both your asses would be dead as fucking fried chicken,but you happen to pull this shit while I&apos;m in a transitional period so I don&apos;t wanna kill you, I wanna help you. But I can&apos;t give you this case, it don&apos;t belong to me. Besides, I&apos;ve already been through too much shit this morning over this case to hand it over to your dumb ass.'
+  }
+]
 
 const Profile: NextPage = () => {
   return (
@@ -28,31 +39,7 @@ const Profile: NextPage = () => {
           <LikeIcon size={6}/>
           </BtnTextCol>
         </div>
-        <div className="mt-12">
-          <div className="flex space-x-4 items-center">
-            <div className="w-12 h-12 rounded-full bg-slate-400" />
-            <div>
-              <h4 className="text-sm font-bold text-gray-800">니꼬</h4>
-              <div className="flex items-center">
-                <StarIcon textColorClass='text-yellow-400'/>
-                <StarIcon textColorClass='text-yellow-400'/>
-                <StarIcon textColorClass='text-yellow-400'/>
-                <StarIcon textColorClass='text-yellow-400'/>
-                <StarIcon/>
-              </div>
-            </div>
-          </div>
-          <div className="mt-4 text-gray-600 text-sm">
-            <p>
-              Normally, both your asses would be dead as fucking fried chicken,
-              but you happen to pull this shit while I&apos;m in a transitional
-              period so I don&apos;t wanna kill you, I wanna help you. But I
-              can&apos;t give you this case, it don&apos;t belong to me.
-              Besides, I&apos;ve already been through too much shit this morning
-              over this case to hand it over to your dumb ass.
-            </p>
-          </div>
-        </div>
+        {reviewList.map((item) => <ReviewForUser key={item.id} id={item.id} userName={item.userName} score={item.score} desc={item.desc}/>)}
       </div>
     </Layout>
   );

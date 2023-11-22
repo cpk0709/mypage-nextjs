@@ -16,3 +16,10 @@ export interface CommunityListItemProps {
   interestingCount:number;
   answerCount:number;
 }
+
+export type ReviewForUserProps = {
+  id:number;
+  userName: string;
+  score:number;
+  desc:string;
+}
