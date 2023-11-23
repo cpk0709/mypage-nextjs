@@ -12,7 +12,7 @@ export default function Input({
   ...rest
 }: InputProps) {
   return (
-    <div>
+    <div className='mt-2'>
       <label
         className="mb-1 block text-sm font-medium text-gray-700"
         htmlFor={name}
