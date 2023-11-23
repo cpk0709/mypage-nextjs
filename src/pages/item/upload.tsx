@@ -3,6 +3,7 @@ import SquareStretchButton from '@/components/atom/SquareStretchButton';
 import AddImageIcon from '@/components/atom/icons/AddImageIcon';
 import Layout from '@/components/common/layout';
 import Input from '@/components/molecules/Input';
+import Textarea from '@/components/organisms/Textarea';
 
 const Upload: NextPage = () => {
   return (
@@ -15,21 +16,7 @@ const Upload: NextPage = () => {
           </label>
         </div>
         <Input label="price" name="price" kind="price" />
-        <div>
-          <label
-            className="text-sm mb-1 block font-medium text-gray-900"
-            htmlFor="description"
-          >
-            Description
-          </label>
-          <div>
-            <textarea
-              className="mt-1 shadow-sm w-full focus:outline-none  focus:ring-orange-500 rounded-md border-gray-300 focus:border-orange-500"
-              id="description"
-              rows={4}
-            />
-          </div>
-        </div>
+        <Textarea label='Description' name='description'/>
         <SquareStretchButton
           btnText="Upload product"
           buttonStyle={['mt-4', 'text-sm']}
