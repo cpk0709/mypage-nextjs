@@ -11,9 +11,7 @@ const EachItem = ({
   chatCount,
 }: EachItemProps) => {
   return (
-    <div
-      className=" px-4 border-b border-solid border-gray-200 pb-4 cursor-pointer flex justify-between"
-    >
+    <div className=" px-4 border-b border-solid border-gray-200 pb-4 cursor-pointer flex justify-between">
       <div className="flex space-x-4">
         <div className="w-20 h-20 bg-gray-400 rounded-md" />
         <div className="pt-2 flex flex-col">
@@ -24,11 +22,11 @@ const EachItem = ({
       </div>
       <div className="flex space-x-2 justify-end items-end">
         <div className="flex space-x-0.5 items-center text-sm text-gray-600">
-          <LikeIcon/>
+          <LikeIcon />
           <span>{likeCount}</span>
         </div>
         <div className="flex space-x-0.5 items-center text-sm text-gray-600">
-          <ChatIcon/>
+          <ChatIcon />
           <span>{chatCount}</span>
         </div>
       </div>
