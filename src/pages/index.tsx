@@ -6,6 +6,7 @@ import FloatingButton from '@/components/atom/FloatingButton';
 import PlusIcon from '@/components/atom/icons/PlusIcon';
 import { useRouter } from 'next/router';
 import '@/libs/client';
+import Forms from '@/components/organisms/forms';
 
 const itemList: Array<EachItemProps> = [
   {
@@ -85,6 +86,7 @@ const Home: NextPage = () => {
             />
           </button>
         ))}
+        <Forms/>
         <FloatingButton onClick={moveToUpload}>
           <PlusIcon />
         </FloatingButton>
