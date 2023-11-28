@@ -10,11 +10,21 @@ interface EnterForm {
 
 export default function Enter() {
   const [method, setMethod] = useState<'email' | 'phone'>('email');
-  const onEmailClick = () => setMethod('email');
-  const onPhoneClick = () => setMethod('phone');
+  const { register, reset, handleSubmit } = useForm<EnterForm>();
 
-  const { register, watch } = useForm<EnterForm>();
-  console.log(watch());
+  const onEmailClick = () => {
+    reset();
+    setMethod('email');
+  };
+  const onPhoneClick = () => {
+    reset();
+    setMethod('phone');
+  };
+
+  const onSubmit = (data: EnterForm) => {
+    console.log('result : ', data);
+  };
+
   return (
     <div className="mt-16 px-4">
       <h3 className="text-3xl font-bold text-center">Enter to Carrot</h3>
@@ -46,7 +56,7 @@ export default function Enter() {
             </button>
           </div>
         </div>
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className=" mt-1">
             {method === 'email' ? (
               <Input
@@ -54,6 +64,8 @@ export default function Enter() {
                 label={method}
                 kind="email"
                 name={method}
+                type="email"
+                required
               />
             ) : null}
             {method === 'phone' ? (
@@ -62,6 +74,7 @@ export default function Enter() {
                 label={method}
                 kind="phone"
                 name={method}
+                required
               />
             ) : null}
           </div>
