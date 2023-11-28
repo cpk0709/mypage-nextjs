@@ -13,8 +13,8 @@ export default function Enter() {
   const onEmailClick = () => setMethod('email');
   const onPhoneClick = () => setMethod('phone');
 
-  const { register } = useForm<EnterForm>();
-
+  const { register, watch } = useForm<EnterForm>();
+  console.log(watch());
   return (
     <div className="mt-16 px-4">
       <h3 className="text-3xl font-bold text-center">Enter to Carrot</h3>
@@ -49,10 +49,20 @@ export default function Enter() {
         <form onSubmit={(e) => e.preventDefault()}>
           <div className=" mt-1">
             {method === 'email' ? (
-              <Input label={method} kind="email" name={method} />
+              <Input
+                register={register('email')}
+                label={method}
+                kind="email"
+                name={method}
+              />
             ) : null}
             {method === 'phone' ? (
-              <Input label={method} kind="phone" name={method} />
+              <Input
+                register={register('phone')}
+                label={method}
+                kind="phone"
+                name={method}
+              />
             ) : null}
           </div>
           <button className="mt-5 bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 border border-transparent rounded-md w-full shadow-sm text-sm font-medium focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 focus:outline-none">
