@@ -10,7 +10,7 @@ const UseReduxPage = () => {
 
   useEffect(() => {
     setTodoVal(todoVal);
-  }, [todoValue]);
+  }, [todoVal, todoValue]);
 
   const onIncrement = () => {
     dispatch({ type: 'INCREMENT' });

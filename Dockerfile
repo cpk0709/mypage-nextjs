@@ -22,6 +22,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Prisma 클라이언트 생성
+RUN npx prisma generate
+
 # debug files
 RUN ls -la
 
