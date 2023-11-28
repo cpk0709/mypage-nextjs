@@ -5,7 +5,7 @@ import EachItem from '@/components/organisms/EachItem';
 import FloatingButton from '@/components/atom/FloatingButton';
 import PlusIcon from '@/components/atom/icons/PlusIcon';
 import { useRouter } from 'next/router';
-import '@/libs/client';
+import '@/libs/server/client';
 import Forms from '@/components/organisms/forms';
 
 const itemList: EachItemProps[] = [
