@@ -6,7 +6,7 @@ interface Props {
   avataUrl?: string;
 }
 
-const Message = ({ message, reversed, avataUrl }: Props) => {
+const Message = ({ message, reversed }: Props) => {
   return (
     <div
       className={cls(

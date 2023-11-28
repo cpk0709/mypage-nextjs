@@ -7,13 +7,14 @@ import StreamListItem from '@/components/organisms/StreamListItem';
 
 const Live: NextPage = () => {
   const route = useRouter();
+
   const moveToStreamCreate = () => {
-    route.push('/streams/create');
+    void route.push('/streams/create');
   };
 
   const moveToStreamDetail = () => {
     // need to edit
-    route.push('/streams/1');
+    void route.push('/streams/1');
   };
 
   return (

@@ -16,7 +16,7 @@ const Upload: NextPage = () => {
           </label>
         </div>
         <Input label="price" name="price" kind="price" />
-        <Textarea label='Description' name='description'/>
+        <Textarea label="Description" name="description" />
         <SquareStretchButton
           btnText="Upload product"
           buttonStyle={['mt-4', 'text-sm']}

@@ -1,5 +1,5 @@
 export interface EachItemProps {
-  id:number;
+  id: number;
   itemTitle: string;
   option: string;
   price: number;
@@ -8,18 +8,18 @@ export interface EachItemProps {
 }
 
 export interface CommunityListItemProps {
-  id:number;
-  tag:string;
-  title:string;
-  userName:string;
-  uploadTime:string;
-  interestingCount:number;
-  answerCount:number;
+  id: number;
+  tag: string;
+  title: string;
+  userName: string;
+  uploadTime: string;
+  interestingCount: number;
+  answerCount: number;
 }
 
 export type ReviewForUserProps = {
-  id:number;
+  id: number;
   userName: string;
-  score:number;
-  desc:string;
-}
+  score: number;
+  desc: string;
+};

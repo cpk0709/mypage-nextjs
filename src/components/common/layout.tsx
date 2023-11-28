@@ -16,9 +16,11 @@ interface LayoutProps {
 
 const Layout = ({ children, title, hasTabBar, canGoBack }: LayoutProps) => {
   const router = useRouter();
+
   const onClick = () => {
     router.back();
   };
+
   return (
     <div>
       <div
@@ -31,7 +33,7 @@ const Layout = ({ children, title, hasTabBar, canGoBack }: LayoutProps) => {
           <button onClick={onClick}>
             <GoBackIcon />
           </button>
-        ) : null}
+        ) : undefined}
         {title && <span>{title}</span>}
       </div>
       <div className={cls('pt-12', hasTabBar ? 'pb-24' : '')}>{children}</div>

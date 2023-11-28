@@ -1,5 +1,4 @@
 const ShoppingBagIcon = () => {
-  
   return (
     <svg
       className="w-6 h-6"
