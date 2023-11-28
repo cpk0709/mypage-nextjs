@@ -6,7 +6,7 @@ import CommunityListItem from '@/components/organisms/CommunityListItem';
 import WriteIcon from '@/components/atom/icons/WriteIcon';
 import { useRouter } from 'next/router';
 
-const CommunityList: Array<CommunityListItemProps> = [
+const CommunityList: CommunityListItemProps[] = [
   {
     id: 1,
     tag: '동네질문',
@@ -56,16 +56,18 @@ const CommunityList: Array<CommunityListItemProps> = [
 
 const Community: NextPage = () => {
   const route = useRouter();
+
   const moveToWrite = () => {
-    route.push('/community/write');
+    void route.push('/community/write');
   };
+
   return (
     <Layout title="Community" hasTabBar>
       <div className="py-16 px-4 space-y-8">
         {CommunityList.map((item) => (
           <button
             key={item.id}
-            onClick={() => route.push(`/community/${item.id}`)}
+            onClick={() => void route.push(`/community/${item.id}`)}
             className="block w-full"
           >
             <CommunityListItem

@@ -5,10 +5,12 @@ import { useRouter } from 'next/router';
 
 const Chats: NextPage = () => {
   const route = useRouter();
+
   const moveToChat = () => {
     // need to edit
-    route.push('/chats/1');
+    void route.push('/chats/1');
   };
+
   return (
     <Layout title="Chat" hasTabBar>
       <div className="py-10 divide-y-[1px]">

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { useCallback } from 'react';
 import { useForm, SubmitHandler, SubmitErrorHandler } from 'react-hook-form';
 
@@ -9,9 +10,10 @@ type UserInputs = {
 };
 
 const Forms = () => {
-  const { register, handleSubmit, watch, clearErrors } = useForm<UserInputs>();
+  const { register, handleSubmit, clearErrors } = useForm<UserInputs>();
 
   const onSubmit: SubmitHandler<UserInputs> = (data) => {
+    // eslint-disable-next-line no-console
     console.log(data);
   };
 
@@ -22,6 +24,7 @@ const Forms = () => {
       } else if (formError.email?.type === 'required') {
         alert('이메일을 입력해 주세요.');
       }
+
       clearErrors();
     },
     [clearErrors],

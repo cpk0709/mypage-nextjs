@@ -26,7 +26,8 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:sonarjs/recommended"
+    "plugin:sonarjs/recommended",
+    "prettier"
   ],
   "plugins": [
     "@typescript-eslint",
@@ -54,8 +55,8 @@
     "sonarjs/cognitive-complexity": "error",
     "sonarjs/no-identical-expressions": "error",
     "sonarjs/no-duplicate-string": "off",
-    "simple-import-sort/imports": "error",
-    "import/newline-after-import": "error",
+    "simple-import-sort/imports": "off",
+    "import/newline-after-import": "off",
     "import/no-absolute-path": "error",
     "import/no-duplicates": "error",
     "prettier/prettier": [
@@ -151,10 +152,7 @@
     "@typescript-eslint/ban-tslint-comment": "error",
     "@typescript-eslint/consistent-indexed-object-style": "error",
     // "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
-    "@typescript-eslint/consistent-type-imports": [
-      "error",
-      { "prefer": "type-imports" }
-    ],
+    "@typescript-eslint/consistent-type-imports": "off",
     "@typescript-eslint/no-misused-new": "error",
     "@typescript-eslint/no-unsafe-assignment": "off",
     "@typescript-eslint/no-unsafe-argument": "off",
@@ -243,9 +241,9 @@
         }
       }
     ],
-    "@typescript-eslint/type-annotation-spacing": "error",
+    "@typescript-eslint/type-annotation-spacing": "off",
     "@typescript-eslint/unified-signatures": "error",
-    "arrow-body-style": "error",
+    "arrow-body-style": "off",
     "arrow-parens": ["error", "always"],
     "camelcase": "off",
     "complexity": "off",
@@ -272,7 +270,7 @@
     "strict": ["error", "never"],
     "curly": "error",
     "dot-notation": "error",
-    "eol-last": "error",
+    "eol-last": "off",
     "eqeqeq": ["error", "smart"],
     "guard-for-in": "error",
     "id-match": "error",
@@ -281,12 +279,7 @@
     "import/no-internal-modules": "off",
     "import/order": "off",
     "max-classes-per-file": ["error", 1],
-    "max-len": [
-      "error",
-      {
-        "code": 150
-      }
-    ],
+    "max-len": "off",
     "new-parens": "error",
     "no-bitwise": "error",
     "no-caller": "error",

@@ -2,16 +2,19 @@ import StarIcon from '@/components/atom/icons/StarIcon';
 import { ReviewForUserProps } from '@/types/types';
 import { ReactNode } from 'react';
 
-const ReviewForUser = ({ id, userName, score, desc }: ReviewForUserProps) => {
+const ReviewForUser = ({ userName, score, desc }: ReviewForUserProps) => {
   const handleScore = () => {
-    let stars: ReactNode[] = [];
+    const stars: ReactNode[] = [];
+
     for (let i = 1; i <= 5; i++) {
       if (score >= i) {
         stars.push(<StarIcon key={i} textColorClass="text-yellow-400" />);
         continue;
       }
+
       stars.push(<StarIcon key={i} />);
     }
+
     return stars;
   };
 

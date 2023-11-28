@@ -3,7 +3,6 @@ import ChatIcon from '@/components/atom/icons/ChatIcon';
 import LikeIcon from '@/components/atom/icons/LikeIcon';
 
 const EachItem = ({
-  id,
   itemTitle,
   option,
   price,

@@ -3,7 +3,6 @@ import ChatIcon from '@/components/atom/icons/ChatIcon';
 import InterestingIcon from '@/components/atom/icons/InterestingIcon';
 
 const CommunityListItem = ({
-  id,
   tag,
   title,
   userName,

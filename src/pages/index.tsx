@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import '@/libs/client';
 import Forms from '@/components/organisms/forms';
 
-const itemList: Array<EachItemProps> = [
+const itemList: EachItemProps[] = [
   {
     id: 1,
     itemTitle: 'New iPhone 14',
@@ -66,16 +66,22 @@ const itemList: Array<EachItemProps> = [
     chatCount: 3,
   },
 ];
+
 const Home: NextPage = () => {
   const router = useRouter();
+
   const moveToUpload = () => {
-    router.push('/item/upload');
+    void router.push('/item/upload');
   };
+
   return (
     <Layout title="home" hasTabBar>
       <div className="flex flex-col space-y-5 py-10">
         {itemList.map((item) => (
-          <button key={item.id} onClick={() => router.push(`/item/${item.id}`)}>
+          <button
+            key={item.id}
+            onClick={() => void router.push(`/item/${item.id}`)}
+          >
             <EachItem
               id={item.id}
               itemTitle={item.itemTitle}
@@ -86,7 +92,7 @@ const Home: NextPage = () => {
             />
           </button>
         ))}
-        <Forms/>
+        <Forms />
         <FloatingButton onClick={moveToUpload}>
           <PlusIcon />
         </FloatingButton>
