@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import Input from '@/components/molecules/Input';
 import GithubIcon from '@/components/atom/icons/GithubIcon';
 import TwitterIcon from '@/components/atom/icons/TwitterIcon';
+import useMutation from '@/libs/client/useMutation';
 
 interface EnterForm {
   email?: string;
@@ -12,6 +13,7 @@ interface EnterForm {
 }
 
 export default function Enter() {
+  const [enter, { loading, data, error }] = useMutation('api/users/enter');
   const [method, setMethod] = useState<'email' | 'phone'>('email');
   const [isLoading, setIsLoading] = useState(false);
   const { register, reset, handleSubmit } = useForm<EnterForm>();
@@ -27,17 +29,17 @@ export default function Enter() {
   };
 
   const onValid = (data: EnterForm) => {
-    setIsLoading(true);
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    fetch('/api/users/enter', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }).then(() => {
-      setIsLoading(false);
-    });
+    enter(data);
+    // setIsLoading(true);
+    // fetch('/api/users/enter', {
+    //   method: 'POST',
+    //   body: JSON.stringify(data),
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    // }).then(() => {
+    //   setIsLoading(false);
+    // });
   };
 
   return (
