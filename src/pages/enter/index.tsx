@@ -13,9 +13,9 @@ interface EnterForm {
 }
 
 export default function Enter() {
-  const [enter, { loading, data, error }] = useMutation('api/users/enter');
+  const [enter, { isLoading }] = useMutation('api/users/enter');
   const [method, setMethod] = useState<'email' | 'phone'>('email');
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const { register, reset, handleSubmit } = useForm<EnterForm>();
 
   const onEmailClick = () => {
@@ -28,18 +28,12 @@ export default function Enter() {
     setMethod('phone');
   };
 
-  const onValid = (data: EnterForm) => {
-    enter(data);
-    // setIsLoading(true);
-    // fetch('/api/users/enter', {
-    //   method: 'POST',
-    //   body: JSON.stringify(data),
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    // }).then(() => {
-    //   setIsLoading(false);
-    // });
+  const onValid = (formData: EnterForm) => {
+    if (isLoading) {
+      return;
+    }
+
+    enter(formData);
   };
 
   return (

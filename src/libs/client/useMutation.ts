@@ -1,11 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 
-export default function useMutation(url: string) {
+export default function useMutation(
+  url: string,
+): [
+  (data: any) => Promise<void>,
+  { isLoading: boolean; data: any; error: any },
+] {
   const [isLoading, setIsLoading] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
   const [data, setData] = useState<undefined | any>();
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
   const [error, setError] = useState<undefined | any>();
 
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   function mutation(data: any) {
     setIsLoading(true);
 

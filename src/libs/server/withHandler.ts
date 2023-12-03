@@ -1,3 +1,4 @@
+import { logger } from '@/utils/logger';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default function withHandler(
@@ -10,9 +11,10 @@ export default function withHandler(
     }
 
     try {
+      // eslint-disable-next-line @typescript-eslint/await-thenable
       await fn(req, res);
     } catch (error) {
-      console.log(error);
+      logger.log(error);
 
       return res.status(500).json({ error });
     }
