@@ -33,7 +33,7 @@ export default function Enter() {
       return;
     }
 
-    enter(formData);
+    void enter(formData);
   };
 
   return (
