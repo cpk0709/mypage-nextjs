@@ -1,13 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    res.status(405).end();
+import withHandler from '@/libs/server/withHandler';
 
-    return;
-  }
-
-  // eslint-disable-next-line no-console
-  console.log(req.body.email);
+function handler(req: NextApiRequest, res: NextApiResponse) {
+  console.log('success', req.body.email);
   res.status(200).end();
 }
+
+export default withHandler('POST', handler);
