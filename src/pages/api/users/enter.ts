@@ -33,7 +33,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       },
     },
   });
-  console.log('token ::::', token);
   res.status(200).end();
 }
 
