@@ -2,12 +2,12 @@
 import { useState } from 'react';
 
 export default function useMutation(url: string) {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<undefined | any>();
   const [error, setError] = useState<undefined | any>();
 
   function mutation(data: any) {
-    setLoading(true);
+    setIsLoading(true);
 
     return fetch(url, {
       method: 'POST',
@@ -17,9 +17,9 @@ export default function useMutation(url: string) {
       .then((res) => res.json())
       .then(setData)
       .catch(setError)
-      .finally(() => setLoading(false));
+      .finally(() => setIsLoading(false));
     // .then((json) => setData(json)); 위와같이 줄여서 가능
   }
 
-  return [mutation, { loading, data, error }];
+  return [mutation, { isLoading, data, error }];
 }
