@@ -1,6 +1,12 @@
 import { logger } from '@/utils/logger';
 import { NextApiRequest, NextApiResponse } from 'next';
 
+export interface ResponseType {
+  ok: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
+}
+
 export default function withHandler(
   method: 'GET' | 'POST' | 'DELETE',
   fn: (req: NextApiRequest, res: NextApiResponse) => void,
