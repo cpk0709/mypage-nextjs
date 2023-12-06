@@ -110,7 +110,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: 686164345236.dkr.ecr.ap-northeast-2.amazonaws.com/my_web_server
+          tags: 686164345236.dkr.ecr.ap-northeast-2.amazonaws.com/my_web_server:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
