@@ -54,7 +54,7 @@ jobs:
         run: |
           aws s3 sync \
             --region ap-northeast-2 \
-            public/images s3://my-web-server-s3/images
+            public/images s3://my-blog-phil/images
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -67,7 +67,7 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: aws cloudfront create-invalidation --distribution-id EC5FX8ZJHB7EJ --paths "/images/*"
+        run: aws cloudfront create-invalidation --distribution-id E1HCDR1HNK8NRR --paths "/images/*"
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -110,7 +110,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: 686164345236.dkr.ecr.ap-northeast-2.amazonaws.com/my_web_server:latest
+          tags: 686164345236.dkr.ecr.ap-northeast-2.amazonaws.com/my_blog
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -120,7 +120,7 @@ jobs:
       # "commitId=${GITHUB_SHA}" 코드가 자동으로 최신 commit을 불러옵니다.
       # 아까 보관해두었던 AWS_ACCESS_KEY_ID와 AWS_SECRET_ACCESS_KEY는 GitHub secrets에 저장해둡니다.
       - name: Trigger the CodeDeploy in EC2 instance
-        run: aws deploy --region ap-northeast-2 create-deployment --application-name my_web_server --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name my_web_server --github-location repository=cpk0709/mypage-nextjs,commitId=${GITHUB_SHA}
+        run: aws deploy --region ap-northeast-2 create-deployment --application-name my_blog --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name my_blog --github-location repository=cpk0709/mypage-nextjs,commitId=${GITHUB_SHA}
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -138,7 +138,7 @@ jobs:
           target: nextjs-cache
           outputs: type=local,dest=.
           push: false
-          tags: 686164345236.dkr.ecr.ap-northeast-2.amazonaws.com/my_web_server:latest
+          tags: 686164345236.dkr.ecr.ap-northeast-2.amazonaws.com/my_blog
           cache-from: type=gha
 
       - name: print nextjs cache directory after build

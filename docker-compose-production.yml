@@ -1,10 +1,10 @@
 version: '3'
 services:
-  my_web_server:
-    container_name: my_web_server
+  my_blog:
+    container_name: my_blog
     restart: always
     build: .
-    image: 686164345236.dkr.ecr.ap-northeast-2.amazonaws.com/my_web_server:latest
+    image: 686164345236.dkr.ecr.ap-northeast-2.amazonaws.com/my_blog
     expose:
       - '3000'
     # ports:
