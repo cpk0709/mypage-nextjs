@@ -1,8 +1,8 @@
-if [ -d /home/ubuntu/my_web_server ]; then
-    rm -rf /home/ubuntu/my_web_server
+if [ -d /home/ubuntu/my_blog ]; then
+    rm -rf /home/ubuntu/my_blog
 fi
 # v: verify - display result message, p: create parent directory
-mkdir -vp /home/ubuntu/my_web_server
+mkdir -vp /home/ubuntu/my_blog
 # if [[ "$(docker ps -f name=bestclass-crm-codedeploy | grep bestclass-crm-codedeploy 2> /dev/null)" != "" ]]; then
 #   docker stop bestclass-crm-codedeploy
 #   docker rm bestclass-crm-codedeploy

@@ -5,23 +5,23 @@ os: linux
 files:
   # code deploy scripts
   - source: /appspec.yml
-    destination: /home/ubuntu/my_web_server-tmp/
+    destination: /home/ubuntu/my_blog-tmp/
   - source: /codedeploy-scripts
-    destination: /home/ubuntu/my_web_server-tmp/codedeploy-scripts
+    destination: /home/ubuntu/my_blog-tmp/codedeploy-scripts
 
   # docker files
   - source: /docker-compose-production.yml
-    destination: /home/ubuntu/my_web_server-tmp/
+    destination: /home/ubuntu/my_blog-tmp/
   - source: /Dockerfile
-    destination: /home/ubuntu/my_web_server-tmp/
+    destination: /home/ubuntu/my_blog-tmp/
 
   # nginx files
   # - source: /nginx/nginx.conf
-  #   destination: /home/ubuntu/my_web_server-tmp/nginx
+  #   destination: /home/ubuntu/my_blog-tmp/nginx
 
   # commit message files
   # - source: /last-commit-message.txt
-  #   destination: /home/ubuntu/my_web_server-tmp/
+  #   destination: /home/ubuntu/my_blog-tmp/
 
 # source는 로컬의 어떤 파일들을 EC2로 옮길지에 대한 것입니다. 현재는 모든 파일("/")을 선택하고 있습니다.
 # destination은 로컬로부터 받아온 파일들을 EC2 instance 어디에 저장할 지에 대한 것입니다.
