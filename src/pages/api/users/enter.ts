@@ -5,6 +5,8 @@ import withHandler, { ResponseType } from '@/libs/server/withHandler';
 import client from '@/libs/server/client';
 import twilio from 'twilio';
 import { logger } from '@/utils/logger';
+// import smtpTransport from 'nodemailer/lib/smtp-transport';
+import smtptTransport from '@/libs/server/email';
 
 const twilioClient = twilio(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 
@@ -44,6 +46,23 @@ async function handler(
       body: `Your login token is ${payload}`,
     });
     logger.log('message :::', message);
+  }
+
+  if (email) {
+    const mailOptions = {
+      from: process.env.EMAIL_ID,
+      to: email,
+      subject: 'Nomad Carrot Authentication Email',
+      text: `Authentication Code : ${payload}`,
+    };
+
+    try {
+      const result = await smtptTransport.sendMail(mailOptions);
+    } catch (error) {
+      logger.log(error);
+    }
+
+    smtptTransport.close();
   }
 
   res.json({ ok: true });
