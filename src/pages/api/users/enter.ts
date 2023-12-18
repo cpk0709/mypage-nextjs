@@ -102,7 +102,7 @@ async function handler(
     // smtptTransport.close();
   }
 
-  res.json({ ok: true });
+  res.json({ ok: true, twilioSid });
 }
 
 export default withHandler('POST', handler);
