@@ -22,12 +22,7 @@ export default function useMutation(
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     })
-      .then((res) => {
-        // eslint-disable-next-line no-console
-        console.log('in fetch res :::', res);
-
-        return res.json();
-      })
+      .then((res) => res.json())
       .then(setData)
       .catch(setError)
       .finally(() => setIsLoading(false));
