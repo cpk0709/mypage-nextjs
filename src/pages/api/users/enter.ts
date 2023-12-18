@@ -8,7 +8,6 @@ import client from '@/libs/server/client';
 import twilio from 'twilio';
 import { logger } from '@/utils/logger';
 import { createSmtpTransport } from '@/libs/server/email';
-
 const AWS = require('aws-sdk');
 const region = 'ap-northeast-2';
 
