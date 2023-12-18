@@ -4,10 +4,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import withHandler, { ResponseType } from '@/libs/server/withHandler';
-import client from '@/libs/server/client';
-import twilio from 'twilio';
+// import client from '@/libs/server/client';
+// import twilio from 'twilio';
 import { logger } from '@/utils/logger';
-import { createSmtpTransport } from '@/libs/server/email';
+// import { createSmtpTransport } from '@/libs/server/email';
 const AWS = require('aws-sdk');
 const region = 'ap-northeast-2';
 
@@ -50,59 +50,60 @@ async function handler(
   const myPhone = await getParameter('my_blog_env_my_phone');
   const emailId = await getParameter('my_blog_env_email_id');
 
-  const twilioClient = twilio(twilioSid, twilioToken);
+  return res.json({ ok: true, twilioSid, twilioMsid });
+  // const twilioClient = twilio(twilioSid, twilioToken);
 
-  const payload = String(Math.floor(100_000 + Math.random() * 900_000));
-  const token = await client.token.create({
-    data: {
-      payload,
-      user: {
-        connectOrCreate: {
-          where: {
-            ...user,
-          },
-          create: {
-            name: 'Anonymous',
-            ...user,
-          },
-        },
-      },
-    },
-  });
+  // const payload = String(Math.floor(100_000 + Math.random() * 900_000));
+  // const token = await client.token.create({
+  //   data: {
+  //     payload,
+  //     user: {
+  //       connectOrCreate: {
+  //         where: {
+  //           ...user,
+  //         },
+  //         create: {
+  //           name: 'Anonymous',
+  //           ...user,
+  //         },
+  //       },
+  //     },
+  //   },
+  // });
 
-  if (phone) {
-    const message = await twilioClient.messages.create({
-      // messagingServiceSid: process.env.TWILIO_MSID,
-      // to: process.env.MY_PHONE!,
-      messagingServiceSid: twilioMsid,
-      to: myPhone,
-      body: `Your login token is ${payload}`,
-    });
-    logger.log('message :::', message);
-  }
+  // if (phone) {
+  //   const message = await twilioClient.messages.create({
+  //     // messagingServiceSid: process.env.TWILIO_MSID,
+  //     // to: process.env.MY_PHONE!,
+  //     messagingServiceSid: twilioMsid,
+  //     to: myPhone,
+  //     body: `Your login token is ${payload}`,
+  //   });
+  //   logger.log('message :::', message);
+  // }
 
-  if (email) {
-    const mailOptions = {
-      // from: process.env.EMAIL_ID,
-      from: emailId,
-      to: email,
-      subject: 'Nomad Carrot Authentication Email',
-      text: `Authentication Code : ${payload}`,
-    };
+  // if (email) {
+  //   const mailOptions = {
+  //     // from: process.env.EMAIL_ID,
+  //     from: emailId,
+  //     to: email,
+  //     subject: 'Nomad Carrot Authentication Email',
+  //     text: `Authentication Code : ${payload}`,
+  //   };
 
-    try {
-      // const result = await smtptTransport.sendMail(mailOptions);
-      const smtpTransport = await createSmtpTransport();
-      const result = await smtpTransport.sendMail(mailOptions);
-      smtpTransport.close();
-    } catch (error) {
-      logger.log(error);
-    }
+  //   try {
+  //     // const result = await smtptTransport.sendMail(mailOptions);
+  //     const smtpTransport = await createSmtpTransport();
+  //     const result = await smtpTransport.sendMail(mailOptions);
+  //     smtpTransport.close();
+  //   } catch (error) {
+  //     logger.log(error);
+  //   }
 
-    // smtptTransport.close();
-  }
+  //   // smtptTransport.close();
+  // }
 
-  res.json({ ok: true, twilioSid });
+  // res.json({ ok: true });
 }
 
 export default withHandler('POST', handler);
