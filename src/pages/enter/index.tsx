@@ -13,9 +13,11 @@ interface EnterForm {
 }
 
 export default function Enter() {
-  const [enter, { isLoading, data }] = useMutation('api/users/enter');
+  const [enter, { isLoading, data, error }] = useMutation('api/users/enter');
   // eslint-disable-next-line no-console
   console.log('result data~', data);
+  // eslint-disable-next-line no-console
+  console.log('result error~', error);
   const [method, setMethod] = useState<'email' | 'phone'>('email');
   // const [isLoading, setIsLoading] = useState(false);
   const { register, reset, handleSubmit } = useForm<EnterForm>();
