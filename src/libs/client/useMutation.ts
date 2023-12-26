@@ -1,33 +1,40 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
 
-export default function useMutation(
-  url: string,
-): [
-  (data: any) => Promise<void>,
-  { isLoading: boolean; data: any; error: any },
-] {
-  const [isLoading, setIsLoading] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-  const [data, setData] = useState<undefined | any>();
-  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
-  const [error, setError] = useState<undefined | any>();
+interface UseMutationState<T> {
+  loading: boolean;
+  data?: T;
+  error?: T;
+}
 
-  // eslint-disable-next-line @typescript-eslint/no-shadow
+type UseMutaionResult<T> = [(data: any) => Promise<void>, UseMutationState<T>];
+
+export default function useMutation<T = any>(url: string): UseMutaionResult<T> {
+  const [state, setState] = useState<UseMutationState<T>>({
+    loading: false,
+    data: undefined,
+    error: undefined,
+  });
+
   function mutation(data: any) {
-    setIsLoading(true);
+    setState((prev) => ({ ...prev, loading: true }));
 
-    return fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then(setData)
-      .catch(setError)
-      .finally(() => setIsLoading(false));
+    return (
+      fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        .then((res) => res.json().catch(() => {}))
+        .then((resultData) =>
+          setState((prev) => ({ ...prev, data: resultData })),
+        )
+        .catch((error) => setState((prev) => ({ ...prev, error })))
+        .finally(() => setState((prev) => ({ ...prev, loading: false })))
+    );
     // .then((json) => setData(json)); 위와같이 줄여서 가능
   }
 
-  return [mutation, { isLoading, data, error }];
+  return [mutation, { ...state }];
 }
