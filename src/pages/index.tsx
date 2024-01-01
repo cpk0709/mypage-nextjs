@@ -57,14 +57,6 @@ const itemList: EachItemProps[] = [
     likeCount: 2,
     chatCount: 3,
   },
-  {
-    id: 7,
-    itemTitle: '게이밍 의자',
-    option: '화이트 색상',
-    price: 70,
-    likeCount: 2,
-    chatCount: 3,
-  },
 ];
 
 const Home: NextPage = () => {
