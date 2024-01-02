@@ -1,6 +1,6 @@
 import { logger } from '@/utils/logger';
 import { NextApiRequest, NextApiResponse } from 'next';
-
+// import { getIronSession } from 'iron-session';
 export interface ResponseType {
   ok: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -15,6 +15,12 @@ export default function withHandler(
     if (req.method !== method) {
       return res.status(405).end();
     }
+
+    // const session = getIronSession(req, res, {
+    //   password: '...',
+    //   cookieName: '...',
+    // });
+    // console.log('EEEEyar', session);
 
     try {
       // eslint-disable-next-line @typescript-eslint/await-thenable
