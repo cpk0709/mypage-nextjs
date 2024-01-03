@@ -17,10 +17,10 @@ export default function withHandler(
     }
 
     // const session = getIronSession(req, res, {
-    //   password: '...',
-    //   cookieName: '...',
+    //   password: 'sdkjfnskdnfksnfkjsnf389hjr89283hsjknfjksnfwn',
+    //   cookieName: 'test-cookieName',
     // });
-    // console.log('EEEEyar', session);
+    // console.log('iron session :::', session);
 
     try {
       // eslint-disable-next-line @typescript-eslint/await-thenable
