@@ -9,21 +9,17 @@ export interface ResponseType {
 
 export default function withHandler(
   method: 'GET' | 'POST' | 'DELETE',
-  fn: (req: NextApiRequest, res: NextApiResponse) => void,
+  fn: (
+    req: NextApiRequest,
+    res: NextApiResponse,
+  ) => Promise<NextApiResponse<unknown> | undefined>,
 ) {
   return async function (req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== method) {
       return res.status(405).end();
     }
 
-    // const session = getIronSession(req, res, {
-    //   password: 'sdkjfnskdnfksnfkjsnf389hjr89283hsjknfjksnfwn',
-    //   cookieName: 'test-cookieName',
-    // });
-    // console.log('iron session :::', session);
-
     try {
-      // eslint-disable-next-line @typescript-eslint/await-thenable
       await fn(req, res);
     } catch (error) {
       logger.log(error);
