@@ -39,7 +39,6 @@ async function getParameter(name: string): Promise<string> {
 // const twilioClient = twilio(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
-  logger.log(req.session.user);
   const profile = await client.user.findUnique({
     where: {
       id: req.session.user?.id,
