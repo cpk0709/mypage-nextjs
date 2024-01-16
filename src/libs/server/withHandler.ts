@@ -12,7 +12,7 @@ export default function withHandler(
   fn: (
     req: NextApiRequest,
     res: NextApiResponse,
-  ) => Promise<NextApiResponse<unknown> | undefined>,
+  ) => Promise<NextApiResponse<unknown> | undefined | void>,
 ) {
   return async function (req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== method) {
