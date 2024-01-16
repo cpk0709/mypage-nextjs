@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { cls } from '@/libs/client/utils';
 import { useForm } from 'react-hook-form';
 import Input from '@/components/molecules/Input';
 import GithubIcon from '@/components/atom/icons/GithubIcon';
 import TwitterIcon from '@/components/atom/icons/TwitterIcon';
 import useMutation from '@/libs/client/useMutation';
+import { useRouter } from 'next/router';
 
 interface EnterForm {
   email?: string;
@@ -55,6 +56,13 @@ export default function Enter() {
 
     void confirmToken(validForm);
   };
+
+  const router = useRouter();
+  useEffect(() => {
+    if (tokenData?.ok) {
+      void router.push('/');
+    }
+  }, [router, tokenData]);
 
   return (
     <div className="mt-16 px-4">

@@ -1,18 +1,10 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { NextApiRequest, NextApiResponse } from 'next';
-import { withIronSessionApiRoute } from 'iron-session/next';
 import withHandler from '@/libs/server/withHandler';
 import { logger } from '@/utils/logger';
 import client from '@/libs/server/client';
-
-declare module 'iron-session' {
-  interface IronSessionData {
-    user?: {
-      id: number;
-    };
-  }
-}
+import { withApiSession } from '@/libs/server/withSession';
 
 const AWS = require('aws-sdk');
 const region = 'ap-northeast-2';
@@ -55,7 +47,4 @@ async function handler(
   });
 }
 
-export default withIronSessionApiRoute(withHandler('GET', handler), {
-  cookieName: 'carrotsession',
-  password: 'sdkjn38n2ikfdnfoi_dsinfj328fsnfksajnkepgnkdfjngjks',
-});
+export default withApiSession(withHandler('GET', handler));
