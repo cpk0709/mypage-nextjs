@@ -32,7 +32,7 @@ async function getParameter(name: string): Promise<string> {
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { token } = req.body;
-  const exists = await client.token.findUnique({
+  const foundToken = await client.token.findUnique({
     where: {
       payload: token,
     },
@@ -42,16 +42,22 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   });
   // logger.log('token:', token);
 
-  if (!exists) {
+  if (!foundToken) {
     return res.status(404).end();
   }
 
-  // logger.log('exists:', exists);
+  // logger.log('foundToken:', foundToken);
   req.session.user = {
-    id: exists.userId,
+    id: foundToken.userId,
   };
   await req.session.save();
-  res.status(200).json({ ok: true });
+  await client.token.deleteMany({
+    where: {
+      userId: foundToken.userId,
+    },
+  });
+  // res.status(200).json({ ok: true });
+  res.json({ ok: true });
 }
 
 export default withApiSession(withHandler('POST', handler));
