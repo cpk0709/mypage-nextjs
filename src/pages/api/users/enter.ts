@@ -4,7 +4,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import withHandler, { ResponseType } from '@/libs/server/withHandler';
-import client from '@/libs/server/client';
 import twilio from 'twilio';
 import { logger } from '@/utils/logger';
 import { createSmtpTransport } from '@/libs/server/email';
@@ -53,22 +52,22 @@ async function handler(
   const twilioClient = twilio(twilioSid, twilioToken);
 
   const payload = String(Math.floor(100_000 + Math.random() * 900_000));
-  const token = await client.token.create({
-    data: {
-      payload,
-      user: {
-        connectOrCreate: {
-          where: {
-            ...user,
-          },
-          create: {
-            name: 'Anonymous',
-            ...user,
-          },
-        },
-      },
-    },
-  });
+  // const token = await client.token.create({
+  //   data: {
+  //     payload,
+  //     user: {
+  //       connectOrCreate: {
+  //         where: {
+  //           ...user,
+  //         },
+  //         create: {
+  //           name: 'Anonymous',
+  //           ...user,
+  //         },
+  //       },
+  //     },
+  //   },
+  // });
 
   if (phone) {
     const message = await twilioClient.messages.create({
