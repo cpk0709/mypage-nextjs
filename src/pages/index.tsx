@@ -1,5 +1,4 @@
 import type { NextPage } from 'next';
-import Layout from '@/components/common/layout';
 import { EachItemProps } from '@/types/types';
 import EachItem from '@/components/organisms/EachItem';
 import FloatingButton from '@/components/atom/FloatingButton';
@@ -7,6 +6,7 @@ import PlusIcon from '@/components/atom/icons/PlusIcon';
 import { useRouter } from 'next/router';
 import '@/libs/server/client';
 import Forms from '@/components/organisms/forms';
+import withPageFrame from '@/components/withPageFrame';
 
 const itemList: EachItemProps[] = [
   {
@@ -67,30 +67,28 @@ const Home: NextPage = () => {
   };
 
   return (
-    <Layout title="home" hasTabBar>
-      <div className="flex flex-col space-y-5 py-10">
-        {itemList.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => void router.push(`/item/${item.id}`)}
-          >
-            <EachItem
-              id={item.id}
-              itemTitle={item.itemTitle}
-              option={item.option}
-              price={item.price}
-              likeCount={item.likeCount}
-              chatCount={item.chatCount}
-            />
-          </button>
-        ))}
-        <Forms />
-        <FloatingButton onClick={moveToUpload}>
-          <PlusIcon />
-        </FloatingButton>
-      </div>
-    </Layout>
+    <div className="flex flex-col space-y-5 py-10">
+      {itemList.map((item) => (
+        <button
+          key={item.id}
+          onClick={() => void router.push(`/item/${item.id}`)}
+        >
+          <EachItem
+            id={item.id}
+            itemTitle={item.itemTitle}
+            option={item.option}
+            price={item.price}
+            likeCount={item.likeCount}
+            chatCount={item.chatCount}
+          />
+        </button>
+      ))}
+      <Forms />
+      <FloatingButton onClick={moveToUpload}>
+        <PlusIcon />
+      </FloatingButton>
+    </div>
   );
 };
 
-export default Home;
+export default withPageFrame(Home, { title: 'Home' });
