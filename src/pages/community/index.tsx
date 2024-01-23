@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
 import FloatingButton from '@/components/atom/FloatingButton';
-import Layout from '@/components/common/layout';
 import { CommunityListItemProps } from '@/types/types';
 import CommunityListItem from '@/components/organisms/CommunityListItem';
 import WriteIcon from '@/components/atom/icons/WriteIcon';
 import { useRouter } from 'next/router';
+import withPageFrame from '@/components/withPageFrame';
 
 const CommunityList: CommunityListItemProps[] = [
   {
@@ -62,32 +62,30 @@ const Community: NextPage = () => {
   };
 
   return (
-    <Layout title="Community" hasTabBar>
-      <div className="py-16 px-4 space-y-8">
-        {CommunityList.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => void route.push(`/community/${item.id}`)}
-            className="block w-full"
-          >
-            <CommunityListItem
-              id={item.id}
-              tag={item.tag}
-              title={item.title}
-              userName={item.userName}
-              uploadTime={item.uploadTime}
-              interestingCount={item.interestingCount}
-              answerCount={item.answerCount}
-            />
-          </button>
-        ))}
+    <div className="py-16 px-4 space-y-8">
+      {CommunityList.map((item) => (
+        <button
+          key={item.id}
+          onClick={() => void route.push(`/community/${item.id}`)}
+          className="block w-full"
+        >
+          <CommunityListItem
+            id={item.id}
+            tag={item.tag}
+            title={item.title}
+            userName={item.userName}
+            uploadTime={item.uploadTime}
+            interestingCount={item.interestingCount}
+            answerCount={item.answerCount}
+          />
+        </button>
+      ))}
 
-        <FloatingButton onClick={moveToWrite}>
-          <WriteIcon />
-        </FloatingButton>
-      </div>
-    </Layout>
+      <FloatingButton onClick={moveToWrite}>
+        <WriteIcon />
+      </FloatingButton>
+    </div>
   );
 };
 
-export default Community;
+export default withPageFrame(Community, { title: 'Community' });
