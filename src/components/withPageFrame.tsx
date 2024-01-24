@@ -3,18 +3,16 @@ import Layout from '@/components/common/layout';
 
 interface FrameProps {
   isPrepareing?: boolean;
-  hasTabBar?: boolean;
   title: string;
-  hasBottomSection?: boolean;
-  hasFooter?: boolean;
+  hasTabBar?: boolean;
+  canGoBack?: boolean;
 }
 
 const defaultFrameProps: FrameProps = {
   isPrepareing: false,
-  hasTabBar: true,
   title: '',
-  hasBottomSection: true,
-  hasFooter: true,
+  hasTabBar: true,
+  canGoBack: false,
 };
 
 const withPageFrame = <P extends Record<string, unknown>>(
@@ -22,7 +20,7 @@ const withPageFrame = <P extends Record<string, unknown>>(
   frameProps: FrameProps = defaultFrameProps,
 ) => {
   const WithPageFrame: FC<P> = (props) => {
-    const { isPrepareing, hasTabBar, title, hasBottomSection, hasFooter } = {
+    const { isPrepareing, hasTabBar, title, canGoBack } = {
       ...defaultFrameProps,
       ...frameProps,
     };
@@ -32,7 +30,7 @@ const withPageFrame = <P extends Record<string, unknown>>(
     }
 
     return (
-      <Layout title={title} hasTabBar={hasTabBar}>
+      <Layout title={title} hasTabBar={hasTabBar} canGoBack={canGoBack}>
         <WrappedComponent {...props} />
       </Layout>
     );
