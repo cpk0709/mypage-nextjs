@@ -1,4 +1,4 @@
-import { type ComponentType, type FC } from 'react';
+import { useMemo, type ComponentType, type FC } from 'react';
 import Layout from '@/components/common/layout';
 
 interface FrameProps {
@@ -20,17 +20,24 @@ const withPageFrame = <P extends Record<string, unknown>>(
   frameProps: FrameProps = defaultFrameProps,
 ) => {
   const WithPageFrame: FC<P> = (props) => {
-    const { isPrepareing, hasTabBar, title, canGoBack } = {
-      ...defaultFrameProps,
-      ...frameProps,
-    };
+    const finalProps = useMemo(
+      () => ({
+        ...defaultFrameProps,
+        ...frameProps,
+      }),
+      [],
+    );
 
-    if (isPrepareing) {
+    if (finalProps.isPrepareing) {
       return <>준비중입니다.</>;
     }
 
     return (
-      <Layout title={title} hasTabBar={hasTabBar} canGoBack={canGoBack}>
+      <Layout
+        title={finalProps.title}
+        hasTabBar={finalProps.hasTabBar}
+        canGoBack={finalProps.canGoBack}
+      >
         <WrappedComponent {...props} />
       </Layout>
     );
