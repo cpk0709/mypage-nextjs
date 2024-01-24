@@ -1,20 +1,18 @@
-import { type ComponentType, type FC } from 'react';
+import { useMemo, type ComponentType, type FC } from 'react';
 import Layout from '@/components/common/layout';
 
 interface FrameProps {
   isPrepareing?: boolean;
-  hasTabBar?: boolean;
   title: string;
-  hasBottomSection?: boolean;
-  hasFooter?: boolean;
+  hasTabBar?: boolean;
+  canGoBack?: boolean;
 }
 
 const defaultFrameProps: FrameProps = {
   isPrepareing: false,
-  hasTabBar: true,
   title: '',
-  hasBottomSection: true,
-  hasFooter: true,
+  hasTabBar: true,
+  canGoBack: false,
 };
 
 const withPageFrame = <P extends Record<string, unknown>>(
@@ -22,17 +20,24 @@ const withPageFrame = <P extends Record<string, unknown>>(
   frameProps: FrameProps = defaultFrameProps,
 ) => {
   const WithPageFrame: FC<P> = (props) => {
-    const { isPrepareing, hasTabBar, title, hasBottomSection, hasFooter } = {
-      ...defaultFrameProps,
-      ...frameProps,
-    };
+    const finalProps = useMemo(
+      () => ({
+        ...defaultFrameProps,
+        ...frameProps,
+      }),
+      [],
+    );
 
-    if (isPrepareing) {
+    if (finalProps.isPrepareing) {
       return <>준비중입니다.</>;
     }
 
     return (
-      <Layout title={title} hasTabBar={hasTabBar}>
+      <Layout
+        title={finalProps.title}
+        hasTabBar={finalProps.hasTabBar}
+        canGoBack={finalProps.canGoBack}
+      >
         <WrappedComponent {...props} />
       </Layout>
     );
