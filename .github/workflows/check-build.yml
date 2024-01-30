@@ -1,0 +1,33 @@
+name: check build for PR
+on:
+  pull_request:
+    branches:
+      - main
+      - development
+    paths-ignore:
+      - last-commit-message.txt
+  # push:
+  #   branches-ignore:
+  #     - main
+  #     - development
+  #   paths-ignore:
+  #     - last-commit-message.txt
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout mypage-development
+        uses: actions/checkout@v2
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
