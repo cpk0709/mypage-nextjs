@@ -103,7 +103,7 @@ const container = css`
   }
 `;
 
-const index = () => {
+const pageDefault = () => {
   return (
     <section css={container}>
       <div className="frame">
@@ -122,4 +122,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default pageDefault;
