@@ -35,7 +35,7 @@ const container = css`
     100% {
       transform: translate3d(0, 22px, 0) rotate(45deg);
     }
-  `} animate-line-1;
+  `} animate-line-1
   // Define other keyframes following the same pattern
 
   .menu-icon {

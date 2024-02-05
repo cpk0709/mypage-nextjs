@@ -16,8 +16,8 @@ files:
     destination: /home/ubuntu/my_blog-tmp/
 
   # nginx files
-  # - source: /nginx/nginx.conf
-  #   destination: /home/ubuntu/my_blog-tmp/nginx
+  - source: /nginx/nginx.conf
+    destination: /home/ubuntu/my_blog-tmp/nginx
 
   # commit message files
   # - source: /last-commit-message.txt
