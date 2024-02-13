@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css, keyframes } from '@emotion/react';
 import { useState } from 'react';
 
@@ -41,10 +40,10 @@ const animateLine3 = keyframes`
 
 const animateLine1Rev = keyframes`
 0% {
-    transform: translate3d(0, -22px, 0) rotate(45deg);
+    transform: translate3d(0, 22px, 0) rotate(45deg);
   }
   50% {
-    transform: translate3d(0, -22px, 0) rotate(0);
+    transform: translate3d(0, 22px, 0) rotate(0);
   }
 
   100% {
@@ -65,10 +64,10 @@ const animateLine2Rev = keyframes`
 
 const animateLine3Rev = keyframes`
   0% {
-    transform: translate3d(0, 22px, 0) rotate(135deg);
+    transform: translate3d(0, -22px, 0) rotate(135deg);
   }
   50% {
-    transform: translate3d(0, 22px, 0) rotate(0);
+    transform: translate3d(0, -22px, 0) rotate(0);
   }
 
   100% {
@@ -97,12 +96,6 @@ const container = css`
     left: 50%;
     transform: translate(-50%, -50%);
   }
-
-  .no-animation {
-    animation: none !important;
-  }
-
-  // You need to define keyframes for animations inside the css template literal
 `;
 
 const menuBody = css`
