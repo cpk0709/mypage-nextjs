@@ -155,14 +155,13 @@ const PageDefault = () => {
     <section css={container}>
       <div className="frame">
         <div className="center">
-          <div
-            className={`menu-icon ${isActive ? 'active' : 'none'}`}
-            css={menuBody}
-            onClick={toggleMenu}
-          >
-            <div className={'line-1'}></div>
-            <div className={'line-2'}></div>
-            <div className={'line-3'}></div>
+          <div className="circle">
+            <div className="sky"></div>
+            <div className="sun"></div>
+            <div className="side-left"></div>
+            <div className="side-right"></div>
+            <div className="shadow"></div>
+            <div className="ground"></div>
           </div>
         </div>
       </div>
