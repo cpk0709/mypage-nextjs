@@ -147,9 +147,9 @@ const menuBody = css`
 const PageDefault = () => {
   const [isActive, setIsActive] = useState(false);
 
-  const toggleMenu = () => {
-    setIsActive(!isActive);
-  };
+  // const toggleMenu = () => {
+  //   setIsActive(!isActive);
+  // };
 
   return (
     <section css={container}>
