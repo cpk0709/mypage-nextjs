@@ -23,7 +23,7 @@ async function getParameter(name: string): Promise<string> {
 
     return response.Parameter.Value;
   } catch (error) {
-    logger.log('Error in getParameter:', error);
+    logger.log('Error in getParameter ::', error);
 
     throw error;
   }
@@ -77,7 +77,7 @@ async function handler(
       to: myPhone,
       body: `Your login token is ${payload}`,
     });
-    logger.log('message :::', message);
+    logger.log('message ::', message);
   }
 
   if (email) {
