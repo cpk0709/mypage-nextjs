@@ -29,13 +29,31 @@ const sunGoesDown = keyframes`
 		transform: rotate(-28deg);
 	}
 	
-	70% {
+	50% {
 		background: #FFEF00;
 	}
 
   100% {
 		background: #F57209;
     transform: rotate(70deg);
+  }
+`;
+
+const fadingSand = keyframes`
+  0% {
+    background: #272C34;
+  }
+	
+	30% {
+		background: #F0DE75;
+	}
+	
+	70% {
+		background: #F0DE75;
+	}
+
+  100% {
+    background: #272C34;
   }
 `;
 
@@ -63,7 +81,7 @@ const center = css`
 const circle = css`
   position: relative;
   overflow: hidden;
-  clip-path: circle(90px at 90px 90px);
+  /* clip-path: circle(90px at 90px 90px); */
   width: 180px;
   height: 180px;
   border-radius: 50%;
@@ -88,6 +106,16 @@ const circle = css`
     background: #ffef00;
     transform-origin: 50% 400%;
     animation: ${sunGoesDown} 4s cubic-bezier(0.37, 0.67, 0.35, 1) infinite;
+  }
+  .ground {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: #f0de75;
+    animation: ${fadingSand} 4s infinite;
   }
 `;
 
