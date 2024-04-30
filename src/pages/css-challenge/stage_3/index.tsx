@@ -57,6 +57,24 @@ const fadingSand = keyframes`
   }
 `;
 
+const pyramideShading = keyframes`
+  0% {
+    background: #272C34;
+  }
+	
+	30% {
+		background: #F4F4F4;
+	}
+	
+	60% {
+		background: #DDDADA;
+	}
+
+  100% {
+    background: #272C34;
+  }
+`;
+
 const frame = css`
   position: absolute;
   top: 50%;
@@ -93,7 +111,7 @@ const circle = css`
     right: 0;
     height: 124px;
     background: #7ddffc;
-    animation: ${skyTurnsBlack} 4s infinite;
+    animation: ${skyTurnsBlack} 4s cubic-bezier(0.37, 0.67, 0.35, 1) infinite;
   }
   .sun {
     position: absolute;
@@ -106,6 +124,28 @@ const circle = css`
     background: #ffef00;
     transform-origin: 50% 400%;
     animation: ${sunGoesDown} 4s cubic-bezier(0.37, 0.67, 0.35, 1) infinite;
+  }
+  .side-left {
+    position: absolute;
+    top: 67px;
+    left: 35px;
+    height: 57px;
+    width: 116px;
+    background: #f4f4f4;
+    clip-path: polygon(0% 100%, 100% 100%, 50% 0%);
+    animation: ${pyramideShading} 4s cubic-bezier(0.01, 0.57, 0.45, 0.3)
+      infinite;
+  }
+  .side-right {
+    position: absolute;
+    top: 67px;
+    left: 93px;
+    height: 57px;
+    width: 58px;
+    background: #dddada;
+    clip-path: polygon(30% 100%, 100% 100%, 0% 0%);
+    animation: ${pyramideShading} 4s cubic-bezier(0.37, 0.7, 0.25, 0.1) infinite
+      reverse;
   }
   .ground {
     position: absolute;
