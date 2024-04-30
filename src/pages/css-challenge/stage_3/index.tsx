@@ -39,6 +39,49 @@ const sunGoesDown = keyframes`
   }
 `;
 
+const pyramideShading = keyframes`
+  0% {
+    background: #272C34;
+  }
+  
+  30% {
+    background: #F4F4F4;
+  }
+  
+  60% {
+    background: #DDDADA;
+  }
+
+  100% {
+    background: #272C34;
+  }
+`;
+
+const shadowOnTheFloor = keyframes`
+0% {
+		transform: scaleY(0);
+	  clip-path: polygon(115px 0%, 231px 0%, 100% 100%);
+  }
+	
+	30% {
+		transform: scaleY(1);
+	  clip-path: polygon(115px 0%, 231px 0%, 80% 100%);
+	}
+	
+	55% {
+		transform: scaleY(.4);
+	}
+
+	75% {
+		transform: scaleY(1);
+	}
+
+  100% {
+		transform: scaleY(0);
+	  clip-path: polygon(115px 0%, 231px 0%, 0% 100%);
+  }
+`;
+
 const fadingSand = keyframes`
   0% {
     background: #272C34;
@@ -50,24 +93,6 @@ const fadingSand = keyframes`
 	
 	70% {
 		background: #F0DE75;
-	}
-
-  100% {
-    background: #272C34;
-  }
-`;
-
-const pyramideShading = keyframes`
-  0% {
-    background: #272C34;
-  }
-	
-	30% {
-		background: #F4F4F4;
-	}
-	
-	60% {
-		background: #DDDADA;
 	}
 
   100% {
@@ -146,6 +171,18 @@ const circle = css`
     clip-path: polygon(30% 100%, 100% 100%, 0% 0%);
     animation: ${pyramideShading} 4s cubic-bezier(0.37, 0.7, 0.25, 0.1) infinite
       reverse;
+  }
+  .shadow {
+    position: absolute;
+    z-index: 2;
+    top: 124px;
+    left: -80px;
+    height: 30px;
+    width: 360px;
+    background: rgba(0, 0, 0, 0.2);
+    transform-origin: 50% 0%;
+    clip-path: polygon(115px 0%, 231px 0%, 80% 100%);
+    animation: ${shadowOnTheFloor} 4s cubic-bezier(0.37, 0.67, 0.35, 1) infinite;
   }
   .ground {
     position: absolute;
