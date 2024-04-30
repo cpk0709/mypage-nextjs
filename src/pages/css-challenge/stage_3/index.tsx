@@ -1,171 +1,80 @@
 import { css, keyframes } from '@emotion/react';
 import { useState } from 'react';
 
-const animateLine1 = keyframes`
-0% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(0, 22px, 0) rotate(0);
-  }
-
-  100% {
-    transform: translate3d(0, 22px, 0) rotate(45deg);
-  }
-`;
-
-const animateLine2 = keyframes`
+const skyTurnsBlack = keyframes`
   0% {
-    transform: scale(1);
-    opacity: 1;
+    background: #272C34;
   }
+	
+	30% {
+		background: #7DDFFC;
+	}
+	
+	70% {
+		background: #7DDFFC;
+	}
+
   100% {
-    transform: scale(0);
-    opacity: 0;
+    background: #272C34;
   }
 `;
 
-const animateLine3 = keyframes`
-  0% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(0, -22px, 0) rotate(0);
-  }
-
-  100% {
-    transform: translate3d(0, -22px, 0) rotate(135deg);
-  }
+const frame = css`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+  border-radius: 2px;
+  box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  background: #272c34;
+  color: #fff;
 `;
 
-const animateLine1Rev = keyframes`
-0% {
-    transform: translate3d(0, 22px, 0) rotate(45deg);
-  }
-  50% {
-    transform: translate3d(0, 22px, 0) rotate(0);
-  }
-
-  100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
+const center = css`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
-const animateLine2Rev = keyframes`
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-`;
-
-const animateLine3Rev = keyframes`
-  0% {
-    transform: translate3d(0, -22px, 0) rotate(135deg);
-  }
-  50% {
-    transform: translate3d(0, -22px, 0) rotate(0);
-  }
-
-  100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-`;
-
-const container = css`
-  .frame {
+const circle = css`
+  position: relative;
+  overflow: hidden;
+  clip-path: circle(90px at 90px 90px);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  .sky {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    height: 400px;
-    margin-top: -200px;
-    margin-left: -200px;
-    border-radius: 2px;
-    box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
-    background: #3faf82;
-    color: #fff;
-  }
-
-  .center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-`;
-
-const menuBody = css`
-  width: 80px;
-  height: ${3 * 8 + 2 * 14}px; /* Calculated based on variables */
-  cursor: pointer;
-  z-index: 50;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  .line-1,
-  .line-2,
-  .line-3 {
-    height: 8px; /* $menu-icon-line-height */
-    width: 100%;
-    background-color: #fff;
-    border-radius: 3px;
-    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);
-    transition: background-color 0.2s ease-in-out;
-  }
-
-  &.none {
-    .line-1 {
-      animation: ${animateLine1Rev} 0.7s ease-in-out;
-    }
-    .line-2 {
-      /* margin: $menu-icon-line-space 0; */
-      animation: ${animateLine2Rev} 0.7s ease-in-out;
-    }
-    .line-3 {
-      animation: ${animateLine3Rev} 0.7s ease-in-out;
-    }
-  }
-
-  &.active {
-    .line-1 {
-      animation: ${animateLine1} 0.7s forwards;
-    }
-    .line-2 {
-      /* margin: $menu-icon-line-space 0; */
-      animation: ${animateLine2} 0.7s forwards;
-    }
-    .line-3 {
-      animation: ${animateLine3} 0.7s forwards;
-    }
+    z-index: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 124px;
+    background: #7ddffc;
+    animation: ${skyTurnsBlack} 4s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
   }
 `;
 
 const PageDefault = () => {
   const [isActive, setIsActive] = useState(false);
 
-  // const toggleMenu = () => {
-  //   setIsActive(!isActive);
-  // };
-
   return (
-    <section css={container}>
-      <div className="frame">
-        <div className="center">
-          <div className="circle">
-            <div className="sky"></div>
-            <div className="sun"></div>
-            <div className="side-left"></div>
-            <div className="side-right"></div>
-            <div className="shadow"></div>
-            <div className="ground"></div>
-          </div>
+    <div css={frame}>
+      <div css={center}>
+        <div css={circle}>
+          <div className="sky"></div>
+          <div className="sun"></div>
+          <div className="side-left"></div>
+          <div className="side-right"></div>
+          <div className="shadow"></div>
+          <div className="ground"></div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
