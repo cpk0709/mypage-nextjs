@@ -1,5 +1,4 @@
 import { css, keyframes } from '@emotion/react';
-import { useState } from 'react';
 
 const skyTurnsBlack = keyframes`
   0% {
@@ -16,6 +15,27 @@ const skyTurnsBlack = keyframes`
 
   100% {
     background: #272C34;
+  }
+`;
+
+const sunGoesDown = keyframes`
+  0% {
+		background: #F57209;
+    transform: rotate(-70deg);
+  }
+	
+	30% {
+		background: #FFEF00;
+		transform: rotate(-28deg);
+	}
+	
+	70% {
+		background: #FFEF00;
+	}
+
+  100% {
+		background: #F57209;
+    transform: rotate(70deg);
   }
 `;
 
@@ -55,13 +75,23 @@ const circle = css`
     right: 0;
     height: 124px;
     background: #7ddffc;
-    animation: ${skyTurnsBlack} 4s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+    animation: ${skyTurnsBlack} 4s infinite;
+  }
+  .sun {
+    position: absolute;
+    z-index: 2;
+    top: 7px;
+    left: 73px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #ffef00;
+    transform-origin: 50% 400%;
+    animation: ${sunGoesDown} 4s cubic-bezier(0.37, 0.67, 0.35, 1) infinite;
   }
 `;
 
 const PageDefault = () => {
-  const [isActive, setIsActive] = useState(false);
-
   return (
     <div css={frame}>
       <div css={center}>
