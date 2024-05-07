@@ -20,6 +20,18 @@ const center = css`
   height: 220px;
   top: 90px;
   left: 90px;
+  .dot-1 {
+    position: absolute;
+    z-index: 3;
+    width: 30px;
+    height: 30px;
+    top: 95px;
+    left: 95px;
+    background: #fff;
+    border-radius: 50%;
+    /* animation-fill-mode: both;
+    animation: jump-jump-1 2s $bezier infinite alternate; */
+  }
 `;
 
 const PageDefault = () => {
