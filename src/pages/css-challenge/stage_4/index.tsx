@@ -1,5 +1,17 @@
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
 
+const jumpJump1 = keyframes` 
+	0%, 70% {
+		box-shadow: 2px 2px 3px 2px rgba(0,0,0,0.2);
+		transform: scale(0);
+	}
+
+	100% {
+		box-shadow: 10px 10px 15px 0 rgba(0,0,0,0.3);
+		transform: scale(1);
+	}
+
+`;
 const frame = css`
   position: absolute;
   top: 50%;
@@ -29,8 +41,8 @@ const center = css`
     left: 95px;
     background: #fff;
     border-radius: 50%;
-    /* animation-fill-mode: both;
-    animation: jump-jump-1 2s $bezier infinite alternate; */
+    animation-fill-mode: both;
+    animation: ${jumpJump1} 2s infinite alternate;
   }
 `;
 
