@@ -1,43 +1,9 @@
-import { css, keyframes } from '@emotion/react';
+import { css } from '@emotion/react';
 
-const jumpJump1 = keyframes` 
-	0%, 70% {
-		box-shadow: 2px 2px 3px 2px rgba(0,0,0,0.2);
-		transform: scale(0);
-	}
+const red = '#FA7373';
+const blue = '#7BA2FF';
 
-	100% {
-		box-shadow: 10px 10px 15px 0 rgba(0,0,0,0.3);
-		transform: scale(1);
-	}
-
-`;
-
-const jumpJump2 = keyframes`
-	0%, 40% {
-		box-shadow: 2px 2px 3px 2px rgba(0,0,0,0.2);
-		transform: scale(0);
-	}
-
-	100% {
-		box-shadow: 10px 10px 15px 0 rgba(0,0,0,0.3);
-		transform: scale(1);
-	}
-`;
-
-const jumpJump3 = keyframes`
-	0%, 20% {
-		box-shadow: 2px 2px 3px 2px rgba(0,0,0,0.2);
-		transform: scale(0);
-	}
-
-	100% {
-		box-shadow: 10px 10px 15px 0 rgba(0,0,0,0.3);
-		transform: scale(1);
-	}
-`;
-
-const frame = css`
+const container = css`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -47,61 +13,98 @@ const frame = css`
   margin-left: -200px;
   border-radius: 2px;
   box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
-  background: #e56262;
+  background: #42a7a1;
+  font-family: 'Open Sans', Helvetica, sans-serif;
   color: #fff;
-`;
-
-const center = css`
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  top: 90px;
-  left: 90px;
-  .dot-1 {
-    position: absolute;
-    z-index: 3;
-    width: 30px;
-    height: 30px;
-    top: 95px;
-    left: 95px;
-    background: #fff;
-    border-radius: 50%;
-    animation-fill-mode: both;
-    animation: ${jumpJump1} 2s infinite alternate;
-  }
-  .dot-2 {
-    position: absolute;
-    z-index: 2;
-    width: 60px;
-    height: 60px;
-    top: 80px;
-    left: 80px;
-    background: #fff;
-    border-radius: 50%;
-    animation-fill-mode: both;
-    animation: ${jumpJump2} 2s infinite alternate;
-  }
-  .dot-3 {
-    position: absolute;
-    z-index: 1;
-    width: 90px;
-    height: 90px;
-    top: 65px;
-    left: 65px;
-    background: #fff;
-    border-radius: 50%;
-    animation-fill-mode: both;
-    animation: ${jumpJump3} 2s infinite alternate;
-  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 `;
 
 const PageDefault = () => {
   return (
-    <div css={frame}>
-      <div css={center}>
-        <div className="dot-1"></div>
-        <div className="dot-2"></div>
-        <div className="dot-3"></div>
+    <div className="frame" css={container}>
+      <div className="card">
+        <div className="header">
+          <span className="title big">Weekly report</span>
+          <span className="date small">01. Feb - 07. Feb</span>
+          <span className="type small">Revenue</span>
+          <span className="value big">$ 3621.79</span>
+        </div>
+        <div className="clearfix"></div>
+        <div className="parameter">
+          <span className="red">Views</span>
+          <span className="blue">Purchases</span>
+        </div>
+        <div className="statistic">
+          <div className="line-1"></div>
+          <div className="line-2"></div>
+          <div className="line-3"></div>
+          <div className="data red">
+            <svg>
+              <polyline points="9,46 50,12 90,23 130,11 171,38 211,48 251,19"></polyline>
+            </svg>
+            <div className="points">
+              <div className="point-1">
+                <div className="tooltip">458</div>
+              </div>
+              <div className="point-2">
+                <div className="tooltip">812</div>
+              </div>
+              <div className="point-3">
+                <div className="tooltip">746</div>
+              </div>
+              <div className="point-4">
+                <div className="tooltip">877</div>
+              </div>
+              <div className="point-5">
+                <div className="tooltip">517</div>
+              </div>
+              <div className="point-6">
+                <div className="tooltip">434</div>
+              </div>
+              <div className="point-7">
+                <div className="tooltip">458</div>
+              </div>
+            </div>
+          </div>
+          <div className="data blue">
+            <svg>
+              <polyline points="9,61 50,50 90,65 130,55 171,61 211,74 251,64"></polyline>
+            </svg>
+            <div className="points">
+              <div className="point-1">
+                <div className="tooltip">26</div>
+              </div>
+              <div className="point-2">
+                <div className="tooltip">41</div>
+              </div>
+              <div className="point-3">
+                <div className="tooltip">22</div>
+              </div>
+              <div className="point-4">
+                <div className="tooltip">36</div>
+              </div>
+              <div className="point-5">
+                <div className="tooltip">25</div>
+              </div>
+              <div className="point-6">
+                <div className="tooltip">13</div>
+              </div>
+              <div className="point-7">
+                <div className="tooltip">20</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="days">
+          <span className="day">Mon</span>
+          <span className="day">Tue</span>
+          <span className="day">Wed</span>
+          <span className="day">Thu</span>
+          <span className="day">Fri</span>
+          <span className="day">Sat</span>
+          <span className="day">Sun</span>
+        </div>
       </div>
     </div>
   );
